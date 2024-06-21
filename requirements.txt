@@ -1,0 +1,5 @@
+langchain_openai==0.1.8
+langchain_core==0.2.5
+pymongo==4.7.3
+srt==srt
+python-dotenv==1.0.1
