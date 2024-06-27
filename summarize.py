@@ -108,9 +108,12 @@ def split_for_yt_clipping(subtitles, max_length=2800, overlap=20):
         
         if len(transcript_slice) > (max_length - 100): # Keep some buffer for the next slice
             timestamp_content.append(''.join(temp_subs))
-            transcript_slice = "".join(temp_subs[-overlap:])
-            temp_subs = temp_subs[-overlap:]  # Keep the last 'overlap' subtitles for the next slice
-
+            if overlap:
+                transcript_slice = "".join(temp_subs[-overlap:])
+                temp_subs = temp_subs[-overlap:]  # Keep the last 'overlap' subtitles for the next slice
+            else:
+                transcript_slice = ""
+                temp_subs = []
     # Add the remaining subtitles if any
     if temp_subs:
         timestamp_content.append(''.join(temp_subs))
